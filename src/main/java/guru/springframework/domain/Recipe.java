@@ -4,8 +4,6 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.Cascade;
-
 /**
  * Created by jt on 6/13/17.
  */
@@ -38,6 +36,9 @@ public class Recipe {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    @ManyToMany()
+    private Set<Category> categories;
 
 	public Long getId() {
 		return id;
@@ -103,12 +104,28 @@ public class Recipe {
 		this.directions = directions;
 	}
 
+	public Set<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(final Set<Ingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
+
 	public Byte[] getImage() {
 		return image;
 	}
 
 	public void setImage(final Byte[] image) {
 		this.image = image;
+	}
+
+	public Difficulty getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(final Difficulty difficulty) {
+		this.difficulty = difficulty;
 	}
 
 	public Notes getNotes() {
@@ -119,19 +136,11 @@ public class Recipe {
 		this.notes = notes;
 	}
 
-	public Set<Ingredient> getIngredients() {
-		return ingredients;
+	public Set<Category> getCategories() {
+		return categories;
 	}
 
-	public void setIngredients(final Set<Ingredient> ingredients) {
-		this.ingredients = ingredients;
-	}
-
-	public Difficulty getDifficulty() {
-		return difficulty;
-	}
-
-	public void setDifficulty(final Difficulty difficulty) {
-		this.difficulty = difficulty;
+	public void setCategories(final Set<Category> categories) {
+		this.categories = categories;
 	}
 }
