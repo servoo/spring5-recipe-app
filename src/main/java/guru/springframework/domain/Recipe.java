@@ -1,9 +1,10 @@
 package guru.springframework.domain;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 /**
  * Created by jt on 6/13/17.
@@ -25,11 +26,13 @@ public class Recipe {
     //todo add
     //private Difficulty difficulty;
 
+	@OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "recipe")
+	private Set<Ingredient> ingredients;
+
 	@Lob
     private Byte[] image;
 
-    @OneToOne
-	@Cascade(value = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
 	public Long getId() {
