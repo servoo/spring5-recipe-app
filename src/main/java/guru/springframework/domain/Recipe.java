@@ -26,6 +26,7 @@ public class Recipe {
     //todo add
     //private Difficulty difficulty;
 
+	// Shouldn't we have the 'mappedBy' on the inverse (non owning) side???
 	@OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "recipe")
 	private Set<Ingredient> ingredients;
 
